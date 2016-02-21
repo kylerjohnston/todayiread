@@ -1,0 +1,42 @@
+/* line 1 */
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 7 */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 13 */
+.header {
+  position: relative;
+  width: 100%;
+  padding: 1em 1em 1em 1em;
+}
+
+/* line 19 */
+.header-left {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* line 26 */
+.header-right {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* line 33 */
+.page-content {
+  position: relative;
+  margin-top: 3em;
+}

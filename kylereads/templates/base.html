@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block page_title %}{% endblock %}</title>
+    {% assets "css_all" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
+  </head>
+  <body>
+
+    {% block navigation %}
+    <div class="header">
+      <div class="header-left">
+        <ul class="header-nav">
+          <li class="header-nav"><a href="" class="header-nav">Update your reading progress</a></li>
+        </ul>
+      </div>
+      <div class="header-right">
+        <ul class="header-nav">
+          <li class="header-nav"><a href="" class="header-nav">Sign in</a></li>
+        </ul>
+      </div>
+      {% endblock %}
+
+      <div class="page-content">
+        {% block page_content %}
+        {% endblock %}
+      </div>
+  </body>
+</html>
