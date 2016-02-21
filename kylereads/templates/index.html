@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 
 {% block page_content %}
-<h1>Hello world</h1>
+<div class="page-content">
+  <h1 class="landing-heading">Did you read something today?</h1> 
+  <p><b>Today I Read</b> helps you keep track of your reading progress. Set goals. Track what you've read. Visualize your reading habits with sweet graphs.</p>
+  <p>
+  {% if current_user.is_authenticated %}
+  <a href="{{ url_for('auth.logout') }}" class="landing-button">Log out</a>
+  {% else %}
+  <a href="{{ url_for('auth.login') }}" class="landing-button">Log in</a> <a href="{{ url_for('auth.register') }}" class="landing-button">Register</a></p>
+  {% endif %}
+</div>
 {% endblock %}
 

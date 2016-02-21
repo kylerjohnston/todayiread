@@ -8,42 +8,37 @@
     {% endassets %}
   </head>
   <body>
-
     {% block navigation %}
-    <div class="header">
-      <div class="header-left">
-        <ul class="header-nav">
-          <li class="header-nav"><a href="" class="header-nav">+</a></li>
-        </ul>
-      </div>
-      <div class="header-right">
-        <ul class="header-nav">
-          {% if current_user.is_authenticated %}
-          <li class="header-nav"><a href="{{ url_for('auth.logout') }}" class="header-nav">Log out</a></li>
-          {% else %}
-          <li class="header-nav"><a href="{{ url_for('auth.login') }}" class="header-nav">Sign in</a></li>
-          {% endif %}
-        </ul>
-      </div>
-      {% endblock %}
+    {% endblock %}
 
-      {% block flashed_messages %}
+    {% block flashed_messages %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="container">
       <div class="flashed-messages">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
         <ul class="flashed-messages">
           {% for message in messages %}
           <li class="flashed-message">{{ message }}</li>
           {% endfor %}
         </ul>
-        {% endif %}
-        {% endwith %}
       </div>
+    </div>
+    {% endif %}
+    {% endwith %}
+    {% endblock %}
+    
+    <div class="container">
+      {% block page_content %}
       {% endblock %}
+    </div>
 
-      <div class="page-content">
-        {% block page_content %}
-        {% endblock %}
+    {% block footer %}
+    <div class="container">
+      <div class="footer">
+        <p>&copy; 2016 <a href="http://iamkyle.me">Kyle Johnston</a>.</p>
       </div>
+    </div>
+    {% endblock %}
+
   </body>
 </html>

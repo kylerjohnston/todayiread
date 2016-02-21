@@ -1,8 +1,19 @@
-$mainfont: 'Source Sans Pro', Helvetica, sans-serif;
-$background-color: #333333;
-$primary-color: #fdfdfd;
-$secondary-bg: #2d2d2d;
+/*** Sizes and stuff *********************************************************/
+$content-width: 900px;
+$content-padding: 3em;
 
+/*** Fonts *******************************************************************/
+$mainfont: 'Source Sans Pro', Helvetica, sans-serif;
+$background-color: #fdfdfd;
+$dark-background-color: #333333;
+$primary-color: #333333;
+$secondary-background-color: #2d2d2d;
+$purple: #292767;
+$dark-purple: #1a1f63;
+$light-purple: #535285;
+$light-green: #9dc9ab;
+
+/*** Mixins ******************************************************************/
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;

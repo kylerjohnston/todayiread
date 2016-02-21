@@ -1,16 +1,44 @@
 @import 'base';
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
+/*** General body text stuff *************************************************/
 body {
   font-family: $mainfont;
   background-color: $background-color;
   color: $primary-color;
 }
 
+.flashed-messages {
+  color: $light-green;
+}
+
+.footer {
+  font-size: 0.9em;
+}
+
+/*** Headings ****************************************************************/
+h1.landing-heading {
+  font-size: 4em;
+}
+
+/*** Links *******************************************************************/
+a {
+  color: $purple;
+}
+
+a:hover {
+  color: $light-purple;
+}
+
 /*** Lists *******************************************************************/
 
 ul.header-nav {
   font-size: 0.8em;
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.flashed-messages {
   list-style-type: none;
   padding: 0;
 }
@@ -26,7 +54,7 @@ a.header-nav {
 }
 
 a.header-nav:hover {
-  background-color: $secondary-bg;
+  background-color: $secondary-background-color;
 }
  
 /*** Forms *******************************************************************/

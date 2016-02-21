@@ -1,3 +1,5 @@
+@import 'base';
+
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -10,8 +12,8 @@ html {
   box-sizing: border-box;
 }
 
-body {
-  padding: 1em 2em 1em 2em;
+.container {
+  width: 100%;
 }
 
 .header {
@@ -36,5 +38,23 @@ body {
 
 .page-content {
   position: relative;
-  margin-top: 3em;
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: $content-padding;
+}
+
+.footer {
+  position: relative;
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: $content-padding;
+}
+
+.flashed-messages {
+  position: relative;
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: $content-padding;
+  @include border-radius(4px);
+  text-align: center;
 }

@@ -1,0 +1,17 @@
+<div class="header">
+  <div class="header-left">
+    <ul class="header-nav">
+      <li class="header-nav"><a href="" class="header-nav">+</a></li>
+    </ul>
+  </div>
+  <div class="header-right">
+    <ul class="header-nav">
+      {% if current_user.is_authenticated %}
+      <li class="header-nav"><a href="{{ url_for('auth.logout') }}" class="header-nav">Log out</a></li>
+      {% else %}
+      <li class="header-nav"><a href="{{ url_for('auth.login') }}" class="header-nav">Sign in</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+

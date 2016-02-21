@@ -1,31 +1,37 @@
+/*** Sizes and stuff *********************************************************/
+/*** Fonts *******************************************************************/
+/*** Mixins ******************************************************************/
 
-/* line 1 */
+/*** Sizes and stuff *********************************************************/
+/*** Fonts *******************************************************************/
+/*** Mixins ******************************************************************/
+/* line 3 */
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 7 */
+/* line 9 */
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 13 */
-body {
-  padding: 1em 2em 1em 2em;
+/* line 15 */
+.container {
+  width: 100%;
 }
 
-/* line 17 */
+/* line 19 */
 .header {
   position: relative;
   width: 100%;
   padding: 1em 1em 1em 1em;
 }
 
-/* line 23 */
+/* line 25 */
 .header-left {
   display: inline-block;
   position: absolute;
@@ -33,7 +39,7 @@ body {
   top: 0;
 }
 
-/* line 30 */
+/* line 32 */
 .header-right {
   display: inline-block;
   position: absolute;
@@ -41,48 +47,108 @@ body {
   top: 0;
 }
 
-/* line 37 */
+/* line 39 */
 .page-content {
   position: relative;
-  margin-top: 3em;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3em;
 }
 
+/* line 46 */
+.footer {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3em;
+}
+
+/* line 53 */
+.flashed-messages {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3em;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/*** Sizes and stuff *********************************************************/
+/*** Fonts *******************************************************************/
+/*** Mixins ******************************************************************/
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
-/* line 4 */
+/*** General body text stuff *************************************************/
+/* line 5 */
 body {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
-  background-color: #333333;
-  color: #fdfdfd;
+  background-color: #fdfdfd;
+  color: #333333;
+}
+
+/* line 11 */
+.flashed-messages {
+  color: #9dc9ab;
+}
+
+/* line 15 */
+.footer {
+  font-size: 0.9em;
+}
+
+/*** Headings ****************************************************************/
+/* line 20 */
+h1.landing-heading {
+  font-size: 4em;
+}
+
+/*** Links *******************************************************************/
+/* line 25 */
+a {
+  color: #292767;
+}
+
+/* line 29 */
+a:hover {
+  color: #535285;
 }
 
 /*** Lists *******************************************************************/
-/* line 12 */
+/* line 35 */
 ul.header-nav {
   font-size: 0.8em;
   list-style-type: none;
   padding: 0;
 }
 
+/* line 41 */
+ul.flashed-messages {
+  list-style-type: none;
+  padding: 0;
+}
+
 /*** Links *******************************************************************/
-/* line 20 */
+/* line 48 */
 a.header-nav {
-  color: #fdfdfd;
+  color: #333333;
   text-decoration: none;
   padding: 10px;
-  border: 1px solid #fdfdfd;
+  border: 1px solid #333333;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   border-radius: 4px;
 }
 
-/* line 28 */
+/* line 56 */
 a.header-nav:hover {
   background-color: #2d2d2d;
 }
 
 /*** Forms *******************************************************************/
-/* line 33 */
+/* line 61 */
 label.login {
   display: block;
   width: 500px;
@@ -90,7 +156,7 @@ label.login {
   padding: 0.5em 0 0.5em 0;
 }
 
-/* line 40 */
+/* line 68 */
 input.login {
   display: block;
   width: 500px;
