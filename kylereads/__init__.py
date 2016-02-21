@@ -4,7 +4,9 @@ from config import config
 from flask.ext.login import LoginManager
 from flask.ext.assets import Environment
 from .bundles import css_all
+from flask_mail import Mail
 
+mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -17,6 +19,7 @@ def create_app(config_name):
     config[config_name].init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+    mail.init_app(app)
     assets.init_app(app)
     assets.register('css_all', css_all)
     
