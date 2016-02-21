@@ -7,6 +7,8 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_SUBJECT_PREFIX = '[TodayIRead]'
+    MAIL_DEFAULT_SENDER = ('Admin', 'kylerjohnston@gmail.com')
 
     @staticmethod
     def init_app(app):
