@@ -1,0 +1,13 @@
+Hey {{ user.username }}.
+
+Nice to meet you. Thanks for signing up.
+
+Follow this link to confirm your email address:
+
+{{ url_for('auth.confirm', token = token, _external = True) }}
+
+Your pal,
+
+The Today I Read messenging service
+
+P.S. Replies to this email address are not monitored... so like... don't.

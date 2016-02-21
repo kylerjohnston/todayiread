@@ -27,6 +27,20 @@
       </div>
       {% endblock %}
 
+      {% block flashed_messages %}
+      <div class="flashed-messages">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashed-messages">
+          {% for message in messages %}
+          <li class="flashed-message">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+      </div>
+      {% endblock %}
+
       <div class="page-content">
         {% block page_content %}
         {% endblock %}
