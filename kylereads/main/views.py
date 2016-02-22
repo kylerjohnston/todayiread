@@ -26,6 +26,7 @@ def add_reading_session():
                                  date = form.date.data,
                                  completed = form.completed.data)
         db.session.add_all([title, session])
+        db.session.commit()
         flash('Added your session!')
         return redirect(url_for('main.root'))
     else:
