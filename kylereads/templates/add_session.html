@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Today I Read - Add new reading session{% endblock %}
+
+{% include 'navigation.html' %}
+
+{% block page_content %}
+<div class="page-content">
+  <h1>Add reading session</h1>
+  <form action="{{ url_for('main.add_reading_session') }}" method="POST" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {{ form.date.label(class="login") }} {{ form.date(class="login") }}
+    {{ form.title.label(class="login") }} {{ form.title(class="login") }}
+    {{ form.author.label(class="login") }} {{ form.author(class="login") }}
+    {{ form.genre.label(class="login") }} {{ form.genre(class="login") }}
+    {{ form.pp.label(class="login") }} {{ form.pp(class="login") }}
+    {{ form.submit(class="login-btn") }}
+  </form>
+</div>
+{% endblock %}

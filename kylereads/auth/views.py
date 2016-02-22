@@ -5,17 +5,12 @@ from .forms import LoginForm, RegistrationForm
 from ..models import User
 from .. import db
 from ..email import send_email
-
-def flash_errors(form):
-    for field, errors in form.errors.items():
-        for error in errors:
-            flash(error)
+from ..flash_errors import flash_errors
 
 @auth.route('/login', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash_errors(form)
         user = User.query.filter_by(email = form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)

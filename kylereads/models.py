@@ -57,6 +57,7 @@ class ReadingSession(db.Model):
     title = db.relationship('Title', backref = db.backref('readingsessions', lazy =  'dynamic'))
     pp = db.Column(db.Integer, unique = False)
     date = db.Column(db.Date)
+    completed  = db.Column(db.Boolean, default = False)
 
     def __repr__(self):
         return '<ReadingSession {0}: {1}, {2}, {3} pages. {4}.>'.format(

@@ -1,15 +1,24 @@
 {% extends 'base.html' %}
 
-{% block page_title %}Register{% endblock %}
+{% block page_title %}Register - Today I Read{% endblock %}
+
+{% include 'navigation.html' %}
 
 {% block page_content %}
-<form action="{{ url_for('auth.register') }}" method="POST" enctype="multipart/form-data">
-  {{ form.csrf_token }}
-  {{ form.username.label(class="login") }} {{ form.username(class="login") }}
-  {{ form.email.label(class="login") }} {{ form.email(class="login") }}
-  {{ form.password.label(class="login") }} {{ form.password(class="login") }}
-  {{ form.password2.label(class="login") }} {{ form.password2(class="login") }}
-  {{ form.submit(class="login") }}
-</form>
-
+<div class="page-content">
+  <h1 class="landing-heading">Welcome aboard, comrade.</h1>
+  <p>By registering, you agree to our terms, which are basically:</p>
+  <ol>
+    <li>This service and this software come with absolutely no guarantees or warranties of any kind. Expect nothing and you won't be disappointed.</li>
+    <li>We own any data you give us and can do whatever we want with it (but lbr we're probz not going to do anything with it).</li>
+  </ol>
+  <form action="{{ url_for('auth.register') }}" method="POST" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {{ form.username.label(class="login") }} {{ form.username(class="login") }}
+    {{ form.email.label(class="login") }} {{ form.email(class="login") }}
+    {{ form.password.label(class="login") }} {{ form.password(class="login") }}
+    {{ form.password2.label(class="login") }} {{ form.password2(class="login") }}
+    {{ form.submit(class="login-btn") }}
+  </form>
+</div>
 {% endblock %}

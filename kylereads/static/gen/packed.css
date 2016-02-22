@@ -79,59 +79,72 @@ html {
 /*** Sizes and stuff *********************************************************/
 /*** Fonts *******************************************************************/
 /*** Mixins ******************************************************************/
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
 /*** General body text stuff *************************************************/
 /* line 5 */
 body {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   background-color: #fdfdfd;
   color: #333333;
+  line-height: 1.5;
 }
 
-/* line 11 */
+/* line 12 */
 .flashed-messages {
-  color: #9dc9ab;
+  color: #70d448;
 }
 
-/* line 15 */
+/* line 16 */
 .footer {
   font-size: 0.9em;
 }
 
 /*** Headings ****************************************************************/
-/* line 20 */
+/* line 21 */
 h1.landing-heading {
   font-size: 4em;
+  line-height: 1;
 }
 
 /*** Links *******************************************************************/
-/* line 25 */
+/* line 27 */
 a {
   color: #292767;
 }
 
-/* line 29 */
+/* line 31 */
 a:hover {
   color: #535285;
 }
 
-/*** Lists *******************************************************************/
 /* line 35 */
+a.home-nav {
+  font-size: 2em;
+}
+
+/*** Lists *******************************************************************/
+/* line 41 */
 ul.header-nav {
   font-size: 0.8em;
   list-style-type: none;
   padding: 0;
 }
 
-/* line 41 */
+/* line 47 */
 ul.flashed-messages {
   list-style-type: none;
   padding: 0;
 }
 
+/* line 52 */
+li.header-nav {
+  display: inline;
+  padding: 5px;
+}
+
 /*** Links *******************************************************************/
-/* line 48 */
-a.header-nav {
+/* line 59 */
+a.nav-btn {
   color: #333333;
   text-decoration: none;
   padding: 10px;
@@ -142,13 +155,14 @@ a.header-nav {
   border-radius: 4px;
 }
 
-/* line 56 */
-a.header-nav:hover {
-  background-color: #2d2d2d;
+/* line 67 */
+a.nav-btn:hover {
+  border: 2px solid #333333;
+  font-weight: 700em;
 }
 
 /*** Forms *******************************************************************/
-/* line 61 */
+/* line 73 */
 label.login {
   display: block;
   width: 500px;
@@ -156,15 +170,52 @@ label.login {
   padding: 0.5em 0 0.5em 0;
 }
 
-/* line 68 */
+/* line 80 */
 input.login {
   display: block;
+  font-size: 1em;
+  background-color: #fdfdfd;
   width: 500px;
   margin: 0 auto;
   height: 3em;
   margin-bottom: 1em;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
+  border: 2px solid #535285;
+  transition: border 0.3s;
+}
+
+/* line 92 */
+input.login:focus {
+  border: 2px solid #1a1f63;
+}
+
+/* line 96 */
+.remember-me {
+  display: block;
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+/*** Buttons *****************************************************************/
+/* line 104 */
+.login-btn {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  text-align: center;
+  background-color: #70d448;
+  color: #fdfdfd;
+  height: 3em;
+  border: none;
+  font-size: 1em;
+}
+
+/* line 116 */
+.login-btn:hover {
+  background-color: #64be40;
+}
+
+/* line 120 */
+.login-btn:active {
+  background-color: #59a939;
 }

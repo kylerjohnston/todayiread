@@ -1,11 +1,12 @@
 @import 'base';
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
 
 /*** General body text stuff *************************************************/
 body {
   font-family: $mainfont;
   background-color: $background-color;
   color: $primary-color;
+  line-height: 1.5;
 }
 
 .flashed-messages {
@@ -19,6 +20,7 @@ body {
 /*** Headings ****************************************************************/
 h1.landing-heading {
   font-size: 4em;
+  line-height: 1;
 }
 
 /*** Links *******************************************************************/
@@ -28,6 +30,10 @@ a {
 
 a:hover {
   color: $light-purple;
+}
+
+a.home-nav {
+  font-size: 2em;
 }
 
 /*** Lists *******************************************************************/
@@ -43,9 +49,14 @@ ul.flashed-messages {
   padding: 0;
 }
 
+li.header-nav {
+  display: inline;
+  padding: 5px;
+}
+
 /*** Links *******************************************************************/
 
-a.header-nav {
+a.nav-btn {
   color: $primary-color;
   text-decoration: none;
   padding: 10px;
@@ -53,8 +64,9 @@ a.header-nav {
   @include border-radius(4px);
 }
 
-a.header-nav:hover {
-  background-color: $secondary-background-color;
+a.nav-btn:hover {
+  border: 2px solid $primary-color;
+  font-weight: 700em;
 }
  
 /*** Forms *******************************************************************/
@@ -67,9 +79,44 @@ label.login {
 
 input.login {
   display: block;
+  font-size: 1em;
+  background-color: $background-color;
   width: 500px;
   margin: 0 auto;
   height: 3em;
   margin-bottom: 1em;
-  @include border-radius(4px);
+  border: 2px solid $light-purple;
+  transition: border 0.3s;
+}
+
+input.login:focus {
+  border: 2px solid $dark-purple;
+}
+
+.remember-me {
+  display: block;
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+/*** Buttons *****************************************************************/
+.login-btn {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  text-align: center;
+  background-color: $light-green;
+  color: $background-color;
+  height: 3em;
+  border: none;
+  font-size: 1em;
+}
+
+.login-btn:hover {
+  background-color: $dark-green;
+}
+
+.login-btn:active {
+  background-color: $darker-green;
 }
