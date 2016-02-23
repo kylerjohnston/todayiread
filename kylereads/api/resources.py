@@ -1,6 +1,5 @@
 from flask_restful import Resource, abort
 from ..models import User
-import json
 
 def get_user(username):
     user = User.query.filter_by(username = username).first()
@@ -21,7 +20,7 @@ def jsonify_sessions(session_list):
         }
         session_dict_list.append(this_session)
 
-    return json.dumps(session_dict_list)
+    return session_dict_list
 
 def get_all_sessions(username):
     user = get_user(username)

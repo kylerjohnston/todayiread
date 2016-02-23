@@ -6,7 +6,9 @@
 
 {% block page_content %}
 <div class="page-content">
-  <h1>All sessions:</h1>
   <section id="all-sessions"></section>
 </div>
+<script>
+var username = "{{ current_user.username }}";
+</script>
 {% endblock %}

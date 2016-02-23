@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from config import config
 from flask.ext.login import LoginManager
 from flask.ext.assets import Environment
-from .bundles import css_all
+from .bundles import css_all, js_sessions
 from flask_mail import Mail
 
 mail = Mail()
@@ -23,6 +23,7 @@ def create_app(config_name):
 
     assets.init_app(app)
     assets.register('css_all', css_all)
+    assets.register('js_sessions', js_sessions)
     
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
