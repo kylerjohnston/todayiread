@@ -7,7 +7,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    MAIL_SUBJECT_PREFIX = '[TodayIRead]'
+    MAIL_SUBJECT_PREFIX = '[Today I Read] '
     MAIL_DEFAULT_SENDER = ('Admin', 'kylerjohnston@gmail.com')
 
     @staticmethod
@@ -17,7 +17,7 @@ class Config:
 class DevelopmentConfig(Config):
     SECRET_KEY = 'temporarysecretkey'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:////Users/kyle/Code/kylereads/data.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:////Users/kyle/Code/kylereads/development-data.db'
 
 class TestingConfig(Config):
     SECRET_KEY = os.environ.get('SECRET_KEY')

@@ -6,6 +6,7 @@ from ..models import User
 from .. import db
 from ..email import send_email
 from ..flash_errors import flash_errors
+import datetime
 
 @auth.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -31,10 +32,10 @@ def logout():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(error for error in flash_errors(form))
         user = User(email = form.email.data,
                     username = form.username.data,
-                    password = form.password.data)
+                    password = form.password.data,
+                    registration_date = datetime.datetime.now())
         db.session.add(user)
         db.session.commit()
         token = user.generate_confirmation_token()
