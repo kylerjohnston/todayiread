@@ -1,5 +1,5 @@
 @import 'base';
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700);
+@import url(https://fonts.googleapis.com/css?family=Arvo:700|Source+Sans+Pro:400,700);
 
 /*** General body text stuff *************************************************/
 body {
@@ -33,7 +33,23 @@ a:hover {
 }
 
 a.home-nav {
-  font-size: 2em;
+  font-family: $seriffont;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+a.nav-btn {
+  color: $purple;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid $purple;
+}
+
+a.nav-btn:hover {
+  color: $light-purple;
+  border: 2px solid $light-purple;
+  font-weight: 700em;
 }
 
 /*** Lists *******************************************************************/
@@ -54,21 +70,6 @@ li.header-nav {
   padding: 5px;
 }
 
-/*** Links *******************************************************************/
-
-a.nav-btn {
-  color: $primary-color;
-  text-decoration: none;
-  padding: 10px;
-  border: 1px solid $primary-color;
-  @include border-radius(4px);
-}
-
-a.nav-btn:hover {
-  border: 2px solid $primary-color;
-  font-weight: 700em;
-}
- 
 /*** Forms *******************************************************************/
 label.login {
   display: block;

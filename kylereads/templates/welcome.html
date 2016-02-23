@@ -2,10 +2,12 @@
 
 {% block page_title %}Today I Read - Welcome!{% endblock %}
 
+{% include 'navigation.html' %}
+
 {% block page_content %}
 <div class="page-content">
   <h1 class="landing-heading">Did you read something today?</h1> 
-  <p><b>Today I Read</b> helps you keep track of your reading progress. Set goals. Track what you've read. Visualize your reading habits with sweet graphs.</p>
+  <p><b>Today I read&hellip;</b> helps you keep track of your reading progress. Set goals. Track what you've read. Visualize your reading habits with sweet graphs.</p>
   <p>
   {% if current_user.is_authenticated %}
   <a href="{{ url_for('auth.logout') }}" class="landing-button">Log out</a>
