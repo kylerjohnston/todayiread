@@ -1,4 +1,4 @@
-var url = "/api/sessions/" + username;
+var url = "/api/sessions/" + user_id;
 
 function get_sessions(arr) {
   var session_count = arr['session'].length;
@@ -6,9 +6,9 @@ function get_sessions(arr) {
 };
 
 function user_dates(date) {
-  var registration = new Date(date.slice(0,10));
+//  var registration = new Date(date.slice(0,10));
   var today = new Date();
-  $("span#registration-length").html(date_diff(today, registration));
+  $("span#registration-length").html(date_diff(today, date));
 };
 
 function date_diff(date_one, date_two) {
@@ -63,6 +63,10 @@ function gen_pages_per_day_timeseries(dataSet) {
     .orient("bottom").ticks(5);
   var	yAxis = d3.svg.axis().scale(y)
     .orient("left").ticks(5);
+  var area = d3.svg.area()
+    .x(function(d) { return x(d.date) })
+    .y0(height)
+    .y1(function(d) { return y(d.pages) });
   var	valueline = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.pages); });
@@ -75,6 +79,10 @@ function gen_pages_per_day_timeseries(dataSet) {
   data = date_and_pages_table(dataSet.session);
   x.domain(d3.extent(data, function(d) { return d.date; }));
 	y.domain([0, d3.max(data, function(d) { return d.pages; })]);
+  svg.append("path")
+    .datum(data)
+    .attr("class", "area")
+    .attr("d", area);
   svg.append("path")	
 		.attr("class", "line")
 		.attr("d", valueline(data));
@@ -117,7 +125,8 @@ function date_and_pages_table(sessions) {
     return a.date - b.date;
   });
   var mindate = data[0].date;
-  var maxdate = data[data.length - 1].date;
+//  var maxdate = data[data.length - 1].date;
+  var maxdate = new Date();
   var daterange = d3.time.days(mindate, maxdate);
   new_data = [];
   daterange.forEach(function(d) {
@@ -130,10 +139,11 @@ function date_and_pages_table(sessions) {
       }
     });
   });
+  user_dates(new_data[0].date);
   return new_data;
 };
 
-user_dates(registration_date);
+// user_dates(registration_date);
 
 $.getJSON(url, function(data) {
   get_pages(data['session']);

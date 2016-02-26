@@ -7,12 +7,14 @@
 {% block page_content %}
 <div class="page-content">
   <h1>{{ current_user.username }}&rsquo;s read</h1>
-  <p>You've logged <span id="session-count" class="strong"></span> reading sessions over <span id="registration-length" class="strong"></span> days totaling <span id="total-pages" class="strong"></span> pages.</p>
+  <p>You&rsquo;ve logged <span id="session-count" class="strong"></span> reading sessions over <span id="registration-length" class="strong"></span> days totaling <span id="total-pages" class="strong"></span> pages.</p>
+  <h2>Pages per day</h2>
   <div id="pages-per-day-timeseries" class="padded-full-width"></div>
-  <table id="session-table" class="display" width="100%"></table>
+  <h2>All reading sessions</h2>
+  <table id="session-table" class="display padded-full-width"></table>
 </div>
 <script>
-var username = "{{ current_user.username }}";
+var user_id = "{{ current_user.id }}";
 var registration_date = "{{ current_user.registration_date }}";
 </script>
 {% endblock %}

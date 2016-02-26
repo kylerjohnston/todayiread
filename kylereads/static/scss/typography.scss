@@ -47,13 +47,14 @@ a.nav-btn {
   color: $purple;
   text-decoration: none;
   padding: 10px;
-  border: 1px solid $purple;
+  font-weight: 700;
+/*  border: 1px solid $purple;*/
 }
 
 a.nav-btn:hover {
   color: $light-purple;
-  border: 2px solid $light-purple;
-  font-weight: 700em;
+/*  border: 2px solid $light-purple; */
+  font-weight: 700;
 }
 
 /*** Lists *******************************************************************/

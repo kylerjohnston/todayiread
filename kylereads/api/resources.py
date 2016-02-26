@@ -1,12 +1,12 @@
 from flask_restful import Resource, abort
 from ..models import User
 
-def get_user(username):
-    user = User.query.filter_by(username = username).first()
+def get_user(user_id):
+    user = User.query.filter_by(id = user_id).first()
     if user is not None:
         return user
     else:
-        abort(404, message = 'User {} does not exist'.format(username))
+        abort(404, message = 'User {} does not exist'.format(user_id))
 
 def jsonify_sessions(session_list):
     session_dict_list = {}
@@ -23,11 +23,11 @@ def jsonify_sessions(session_list):
 
     return session_dict_list
 
-def get_all_sessions(username):
-    user = get_user(username)
+def get_all_sessions(user_id):
+    user = get_user(user_id)
     all_sessions = user.sessions.all()
     return jsonify_sessions(all_sessions)
 
 class SessionList(Resource):
-    def get(self, username):
-        return get_all_sessions(username)
+    def get(self, user_id):
+        return get_all_sessions(user_id)
