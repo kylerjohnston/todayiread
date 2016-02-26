@@ -9,7 +9,8 @@ def get_user(username):
         abort(404, message = 'User {} does not exist'.format(username))
 
 def jsonify_sessions(session_list):
-    session_dict_list = []
+    session_dict_list = {}
+    session_dict_list['session'] = []
     for session in session_list:
         this_session = {
             'title': session.title.title,
@@ -18,7 +19,7 @@ def jsonify_sessions(session_list):
             'pages': session.pp,
             'date': session.date.strftime('%Y %m %d')
         }
-        session_dict_list.append(this_session)
+        session_dict_list['session'].append(this_session)
 
     return session_dict_list
 

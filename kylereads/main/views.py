@@ -40,3 +40,4 @@ def add_reading_session():
     else:
         flash_errors(form)
     return render_template('add_session.html', form = form)
+

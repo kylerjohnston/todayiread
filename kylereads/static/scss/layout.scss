@@ -25,15 +25,15 @@ html {
 .header-left {
   display: inline-block;
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 10px;
+  top: 0px;
 }
 
 .header-right {
   display: inline-block;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 0px;
 }
 
 .page-content {
@@ -57,4 +57,9 @@ html {
   padding: $content-padding;
   @include border-radius(4px);
   text-align: center;
+}
+
+.padded-full-width {
+  width: 100%;
+  padding: 2em 0 2em 0;
 }
