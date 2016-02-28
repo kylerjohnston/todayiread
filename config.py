@@ -29,7 +29,7 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
     DB_NAME = 'todayiread'
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql://' + Config.DB_USERNAME + ':' + Config.DB_PASSWORD + 'localhost/' + DB_NAME
+    SQLALCHEMY_DATABASE_URI = 'postgresql://' + Config.DB_USERNAME + ':' + Config.DB_PASSWORD + '@localhost/' + DB_NAME
 
 config = {
     'dev': DevelopmentConfig,
