@@ -100,10 +100,10 @@ function gen_pages_per_day_timeseries(dataSet) {
     svg.append("text")
       .attr("class", "y label")
       .attr("text-anchor", "end")
-      .attr("y", -50)
+      .attr("y", 6)
       .attr("dy", ".75em")
       .attr("transform", "rotate(-90)")
-      .text("pages");
+      .text("Pages");
   }
 };
 
@@ -151,11 +151,212 @@ function date_and_pages_table(sessions) {
   return new_data;
 };
 
-// user_dates(registration_date);
+function day_bar_graph(data) {
+  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+  width = 750 - margin.left - margin.right,
+  height = 270 - margin.top - margin.bottom;
+
+  var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+  var y = d3.scale.linear()
+    .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+
+  var svg = d3.select("#pages-bar").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  data = transform_day_counts(data.session);
+
+  x.domain(data.map(function(d) { return d.day; }));
+  y.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Pages");
+
+  svg.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) { return x(d.day); })
+    .attr("width", x.rangeBand())
+    .attr("y", function(d) { return y(d.total); })
+    .attr("height", function(d) { return height - y(d.total); })
+};
+
+function transform_day_counts(data) {
+  var parseDate = d3.time.format("%Y %m %d").parse;
+  bars = [
+    {"day": "Sun", "total": 0, "count": 0},
+    {"day": "Mon", "total": 0, "count": 0},
+    {"day": "Tues", "total": 0, "count": 0},
+    {"day": "Wed", "total": 0, "count": 0},
+    {"day": "Thurs", "total": 0, "count": 0},
+    {"day": "Fri", "total": 0, "count": 0},
+    {"day": "Sat", "total": 0, "count": 0}
+  ];
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    day = d.date.getDay();
+    bars[day].total += +d.pages;
+  });
+  return bars;
+};
+
+function author_bubbles(data) {
+	var diameter = 750;
+
+	var svg = d3.select('#author-bubbles').append('svg')
+					.attr('width', diameter)
+					.attr('height', diameter);
+
+	var bubble = d3.layout.pack()
+				.size([diameter, diameter])
+				.value(function(d) {return d.size;})
+         // .sort(function(a, b) {
+				// 	return -(a.value - b.value)
+				// }) 
+				.padding(3);
+  
+  // generate data with calculated layout values
+  var nodes = bubble.nodes(transform_author_data(data.session))
+						.filter(function(d) { return !d.children; }); // filter out the outer bubble
+ 
+  var vis = svg.selectAll('circle')
+					.data(nodes);
+  vis.enter().append('g')
+    .attr("class", "node")
+    .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  vis.append('circle')
+			.attr('r', function(d) { return d.r; })
+			.attr('class', function(d) { return d.className; });
+
+  vis.append("text")
+      .attr("dy", ".3em")
+      .attr("class", "circle")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.name.substring(0, d.r / 3); });
+};
+
+function transform_author_data(data) {
+  var author_data = [];
+  data.forEach(function(d) {
+    var matched = false;
+    author_data.forEach(function (a) {
+      if(a.name === d.author) {
+        a.size += +d.pages;
+        matched = true;
+      }
+    });
+    if(!matched) {
+      author_data.push({"name": d.author,
+        "className": "author-circle",
+        "size": +d.pages});
+    }
+  });
+  return {"children": author_data};
+};
+
+function genre_bars(data) {
+  var margin = {top: 40, right: 20, bottom: 30, left: 40},
+  width = 750 - margin.left - margin.right,
+  height = 270 - margin.top - margin.bottom;
+
+  var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+  var y = d3.scale.linear()
+    .range([height, 0]);
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+
+  var svg = d3.select("#genre-bars").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  data = transform_genre_counts(data.session);
+
+  x.domain(data.map(function(d) { return d.genre; }));
+  y.domain([0, d3.max(data, function(d) { return d.count; })]);
+
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Pages");
+
+  svg.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) { return x(d.genre); })
+    .attr("width", x.rangeBand())
+    .attr("y", function(d) { return y(d.count); })
+    .attr("height", function(d) { return height - y(d.count); })
+};
+
+function transform_genre_counts(data) {
+  var bars = [];
+  data.forEach(function(d) {
+    matched = false;
+    bars.forEach(function(b) {
+      if(b.genre === d.genre) {
+        b.count += +d.pages;
+        matched = true;
+      }
+    });
+    if(!matched) {
+      bars.push({"genre": d.genre, "count": +d.pages});
+    }
+  });
+  return bars;
+}
 
 $.getJSON(url, function(data) {
   get_pages(data['session']);
   get_sessions(data);
   generate_session_table(data);
   gen_pages_per_day_timeseries(data);
+  day_bar_graph(data);
+  author_bubbles(data);
+  genre_bars(data);
 });

@@ -97,6 +97,27 @@ html {
   padding: 3em;
 }
 
+/* line 80 */
+.flex-container {
+  width: 100%;
+  display: flex;
+  flex-directon: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* line 89 */
+.flex-side-nav {
+  width: 25%;
+  margin: auto;
+}
+
+/* line 94 */
+.flex-content {
+  width: 75%;
+}
+
 /*** Sizes and stuff *********************************************************/
 /*** Fonts *******************************************************************/
 /*** Mixins ******************************************************************/
@@ -326,4 +347,30 @@ path {
 .area {
   fill: #cbcbda;
   stroke-width: 0;
+}
+
+/* line 22 */
+.bar {
+  fill: #ffa500;
+}
+
+/* line 26 */
+.bar:hover {
+  fill: #db3939;
+}
+
+/* line 30 */
+.x.axis path {
+  display: none;
+}
+
+/* line 34 */
+circle {
+  fill: #70d448;
+}
+
+/* line 38 */
+text.circle {
+  font: 10px sans-serif;
+  fill: #fdfdfd;
 }

@@ -18,3 +18,24 @@ path {
   fill: $v-light-purple;
   stroke-width: 0;
 }
+
+.bar {
+  fill: $mustard;
+}
+
+.bar:hover {
+  fill: $red;
+}
+
+.x.axis path {
+  display: none;
+}
+
+circle {
+  fill: $light-green;
+}
+
+text.circle {
+  font: 10px sans-serif;
+  fill: $background-color;
+}

@@ -1,10 +1,10 @@
 /*** Sizes and stuff *********************************************************/
 $content-width: 900px;
 $content-padding: 3em;
+$sidebar-width: 350px;
 
 /*** Fonts *******************************************************************/
 $mainfont: 'Source Sans Pro', Helvetica, sans-serif;
-$seriffont: 'Arvo', Garamond, serif;
 $background-color: #fdfdfd;
 $dark-background-color: #333333;
 $primary-color: #333333;
@@ -19,7 +19,7 @@ $darker-green: #59a939;
 $red: #db3939;
 $darker-red: #c53333;
 $darkest-red: #832222;
-$sidebar-width: 350px;
+$mustard: #ffa500;
 
 /*** Mixins ******************************************************************/
 @mixin border-radius($radius) {

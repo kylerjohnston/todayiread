@@ -5,12 +5,26 @@
 {% include 'navigation.html' %}
 
 {% block page_content %}
-<div class="page-content">
+<div class="page-left">
+  <h2 class="side-nav">{{ current_user.username }}&rsquo;s data</h2>
+  <ul class="side-nav">
+    <li class="side-nav"><a href="#pages-per-day" class="side-nav">Pages per day</a></li>
+    <li class="side-nav"><a href="#authors" class="side-nav">Authors</a></li>
+    <li class="side-nav"><a href="#genres" class="side-nav">Genres</a></li>
+    <li class="side-nav"><a href="#all-sessions" class="side-nav">All sessions</a></li>
+  </ul>
+</div>
+<div class="page-right">
   <h1>{{ current_user.username }}&rsquo;s read</h1>
   <p>You&rsquo;ve logged <span id="session-count" class="strong"></span> reading sessions over <span id="registration-length" class="strong"></span> days totaling <span id="total-pages" class="strong"></span> pages.</p>
-  <h2>Pages per day</h2>
+  <h2 id="pages-per-day">Pages per day</h2>
   <div id="pages-per-day-timeseries" class="padded-full-width"></div>
-  <h2>All reading sessions</h2>
+  <div id="pages-bar" class="padded-full-width"></div>
+  <h2 id="authors">Authors</h2>
+  <div id="author-bubbles" class="padded-full-width"></div>
+  <h2 id="genres">Genres</h2>
+  <div id="genre-bars" class="padded-full-width"></div>
+  <h2 id="all-sessions">All reading sessions</h2>
   <table id="session-table" class="display padded-full-width"></table>
 </div>
 <script>
