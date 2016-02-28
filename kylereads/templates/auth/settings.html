@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Today I Read - User settings for {{ current_user.username }}{% endblock %}
+
+{% include 'navigation.html' %}
+
+{% block page_content %}
+<div class="page-left">
+  <h2 class="side-nav">Account management</h2>
+  <ul class="side-nav">
+    <li class="side-nav"><a href="#email" class="side-nav">Update email address</a></li>
+    <li class="side-nav"><a href="#password" class="side-nav">Update password</a></li>
+    <li class="side-nav"><a href="#delete" class="side-nav">Delete account</a></li>
+  </ul>
+</div>
+<div class="page-right">
+  <h1>{{ current_user.username }}'s settings</h1>
+  <h2 id="email">Update email address</h2>
+  <form action="{{ url_for('auth.settings') }}" method="POST" enctype="multipart/form-data">
+    {{ email_form.csrf_token }}
+    {{ email_form.email.label(class="form-left") }} {{ email_form.email(class="form-left") }}
+    {{ email_form.password.label(class="form-left") }} {{ email_form.password(class="form-left") }}
+    {{ email_form.submit(class="left-button") }}
+  </form>
+  <h2 id="password">Update password</h2>
+  <form action="{{ url_for('auth.settings') }}" method="POST" enctype="multipart/form-data">
+    {{ password_form.csrf_token }}
+    {{ password_form.old_password.label(class="form-left") }} {{ password_form.old_password(class="form-left") }}
+    {{ password_form.new_password.label(class="form-left") }} {{ password_form.new_password(class="form-left") }}
+    {{ password_form.password2.label(class="form-left") }} {{ password_form.password2(class="form-left") }}
+    {{ password_form.submit(class="left-button") }}
+  </form>
+  <h2 id="delete">Delete account</h2>
+  <form action="{{ url_for('auth.settings') }}" method="POST" enctype="multipart/form-data">
+    {{ delete_form.csrf_token }}
+    <div class="checkbox">{{ delete_form.check1 }} {{ delete_form.check1.label }}</div>
+    <div class="checkbox">{{ delete_form.check2 }} {{ delete_form.check2.label }} </div>
+    {{ delete_form.submit(class="left-button red-btn") }}
+  </form>
+</div>
+{% endblock %}

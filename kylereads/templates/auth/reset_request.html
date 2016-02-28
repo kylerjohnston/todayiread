@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Today I Read - Reset Password{% endblock %}
+
+{% include 'navigation.html' %}
+
+{% block page_content %}
+<div class="page-content">
+  <h1>Reset password</h1>
+  <form action="{{ url_for('auth.password_reset_request') }}" method="POST" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {{ form.email.label(class="login") }} {{ form.email(class="login") }}
+    {{ form.submit(class="login-btn") }}
+  </form>
+</div>
+{% endblock %}

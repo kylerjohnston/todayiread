@@ -1,0 +1,5 @@
+FYI, the email address associated with your account at Today I Read has been changed to {{ new_email }}.
+
+Cheers,
+
+The Today I Read messenging service

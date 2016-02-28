@@ -77,29 +77,34 @@ function gen_pages_per_day_timeseries(dataSet) {
     .append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   data = date_and_pages_table(dataSet.session);
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-	y.domain([0, d3.max(data, function(d) { return d.pages; })]);
-  svg.append("path")
-    .datum(data)
-    .attr("class", "area")
-    .attr("d", area);
-  svg.append("path")	
-		.attr("class", "line")
-		.attr("d", valueline(data));
-  svg.append("g")		
-		.attr("class", "x axis")
-		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis);
-  svg.append("g")		
-		.attr("class", "y axis")
-		.call(yAxis);
-  svg.append("text")
-    .attr("class", "y label")
-    .attr("text-anchor", "end")
-    .attr("y", -50)
-    .attr("dy", ".75em")
-    .attr("transform", "rotate(-90)")
-    .text("pages");
+  if(data === 0) {
+    $("#pages-per-day-timeseries").html("You haven't added any reading sessions yet.");
+  }
+  else {
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.pages; })]);
+    svg.append("path")
+      .datum(data)
+      .attr("class", "area")
+      .attr("d", area);
+    svg.append("path")	
+      .attr("class", "line")
+      .attr("d", valueline(data));
+    svg.append("g")		
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+    svg.append("g")		
+      .attr("class", "y axis")
+      .call(yAxis);
+    svg.append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "end")
+      .attr("y", -50)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("pages");
+  }
 };
 
 function date_and_pages_table(sessions) {
@@ -124,6 +129,9 @@ function date_and_pages_table(sessions) {
   data.sort(function(a, b) {
     return a.date - b.date;
   });
+  if(data.length === 0) {
+    return 0;
+  }
   var mindate = data[0].date;
 //  var maxdate = data[data.length - 1].date;
   var maxdate = new Date();
