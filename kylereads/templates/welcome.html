@@ -13,6 +13,7 @@
   <a href="{{ url_for('auth.logout') }}" class="landing-button">Log out</a>
   {% else %}
   <a href="{{ url_for('auth.login') }}" class="landing-button">Log in</a> <a href="{{ url_for('auth.register') }}" class="landing-button">Register</a></p>
+  <p class="welcome-screenshot"><img class="welcome-screenshot" src="{{ url_for('static', filename='img/screenshot.png') }}" alt="A screenshot of Today I Read's user interface"></p>
   {% endif %}
 </div>
 {% endblock %}

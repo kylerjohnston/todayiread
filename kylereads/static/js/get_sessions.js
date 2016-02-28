@@ -1,3 +1,11 @@
+if(typeof jQuery === 'undefined') {
+  document.write(unescape("%3Cscript src='/static/js/jquery-2.2.1.min.js' type='text/javascript'%3E%3C/script%3E"));
+};
+
+if(typeof d3 === 'undefined') {
+  document.write(unescape("%3Cscript src='/static/js/d3.min.js' type='text/javascript'%3E%3C/script%3E"));
+};
+
 var url = "/api/sessions/" + user_id;
 
 function get_sessions(arr) {

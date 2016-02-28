@@ -21,6 +21,15 @@ body {
   font-weight: 700;
 }
 
+p.welcome-screenshot {
+  text-align: center;
+}
+
+/*** Images ******************************************************************/
+img.welcome-screenshot {
+  border: 2px solid $purple;
+}
+
 /*** Headings ****************************************************************/
 h1.landing-heading {
   font-size: 4em;
@@ -95,6 +104,10 @@ ul.side-nav {
 
 li.side-nav {
   padding: 5px;
+}
+
+ul.form-errors {
+  color: $red;
 }
 
 /*** Forms *******************************************************************/
