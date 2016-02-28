@@ -3,3 +3,4 @@
 *__pycache__*
 venv/
 *.webassets-cache*
+env.py
