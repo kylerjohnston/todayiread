@@ -8,8 +8,7 @@ class AddReadingSessionForm(Form):
                        InputRequired(message = 'Title is required.')])
     date = DateField(label = 'Date',
                      validators = [InputRequired(message = 'Date is required.')],
-                     format = '%Y-%m-%d',
-                     default = datetime.date.today())
+                     format = '%Y-%m-%d')
     pp = IntegerField(label = 'Pages',
                       validators = [InputRequired(message = 'Pages is required.')])
     author = StringField(label = 'Author',

@@ -67,13 +67,14 @@ html {
 }
 
 .page-left {
-  float: left;
+  position: fixed;
   width: $sidebar-width;
   padding: $content-padding;
 }
 
 .page-right {
- margin-left: $sidebar-width;
- padding: $content-padding;
+  position: relative;
+  margin-left: $sidebar-width;
+  padding: $content-padding;
 }
 

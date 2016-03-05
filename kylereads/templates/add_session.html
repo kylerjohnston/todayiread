@@ -9,7 +9,7 @@
   <h1>Add reading session</h1>
   <form action="{{ url_for('main.add_reading_session') }}" method="POST" enctype="multipart/form-data">
     {{ form.csrf_token }}
-    {{ form.date.label(class="form-left") }} {{ form.date(class="form-left") }}
+    {{ form.date.label(class="form-left") }} {{ form.date(class="form-left", id="new-session-date") }}
     {{ form.title.label(class="form-left") }} {{ form.title(class="form-left") }}
     {{ form.author.label(class="form-left") }} {{ form.author(class="form-left") }}
     {{ form.genre.label(class="form-left") }} {{ form.genre(class="form-left") }}

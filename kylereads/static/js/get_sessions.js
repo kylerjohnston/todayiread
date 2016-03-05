@@ -6,15 +6,12 @@ if(typeof d3 === 'undefined') {
   document.write(unescape("%3Cscript src='/static/js/d3.min.js' type='text/javascript'%3E%3C/script%3E"));
 };
 
-var url = "/api/sessions/" + user_id;
-
-function get_sessions(arr) {
+function count_sessions(arr) {
   var session_count = arr['session'].length;
   $("span#session-count").html(session_count);
 };
 
 function user_dates(date) {
-//  var registration = new Date(date.slice(0,10));
   var today = new Date();
   $("span#registration-length").html(date_diff(today, date));
 };
@@ -359,12 +356,23 @@ function transform_genre_counts(data) {
   return bars;
 }
 
-$.getJSON(url, function(data) {
-  get_pages(data['session']);
-  get_sessions(data);
-  generate_session_table(data);
-  gen_pages_per_day_timeseries(data);
-  day_bar_graph(data);
-  author_bubbles(data);
-  genre_bars(data);
-});
+if(typeof user_id !== 'undefined') {
+  var url = "/api/sessions/" + user_id;
+  $.getJSON(url, function(data) {
+    get_pages(data['session']);
+    count_sessions(data);
+    generate_session_table(data);
+    gen_pages_per_day_timeseries(data);
+    day_bar_graph(data);
+    author_bubbles(data);
+    genre_bars(data);
+  });
+}
+
+var sessionDateField = document.getElementById("new-session-date");
+if(sessionDateField !== null) {
+  var today = new Date();
+  var parseDate = d3.time.format("%Y-%m-%d");
+  var dateField = parseDate(today);
+  sessionDateField.setAttribute("value", dateField);
+}
